@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QtHelpProject version="1.0">
+    <namespace>Weighbridge</namespace>
+    <virtualFolder>Help</virtualFolder>
+    <filterSection>
+        <toc>
+            <section title="Weighbridge Help" ref="index.html">
+                <section title="Installation" ref="./installation.html"></section>
+                <section title="Weigh object" ref="./weigh.html"></section>
+            </section>
+        </toc>
+        <keywords>
+            <keyword name="Insert rectangle" ref="./insertrectangle.html"/>
+            <keyword name="Insert ellipse" ref="./insertellipse.html"/>
+            <keyword name="Delete object" ref="./deleteobject.html"/>
+        </keywords>
+        <files>
+            <file>index.html</file>
+            <file>installation.html</file>
+            <file>weigh.html</file>
+        </files>
+    </filterSection>
+</QtHelpProject>

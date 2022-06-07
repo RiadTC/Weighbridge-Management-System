@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 5.2.5.1 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="2017-05-31T09:33:53.115005593"/>
+	<meta name="created" content="00:00:00">
+	<meta name="changed" content="2017-05-31T09:16:22.422905570">
+	<meta name="created" content="00:00:00">
+	<meta name="changed" content="2017-05-24T15:36:30.467687793">
+	<meta name="created" content="00:00:00">
+	<meta name="changed" content="2017-05-23T17:34:39.857477663">
+	<meta name="created" content="00:00:00">
+	<meta name="changed" content="2017-05-23T15:52:31.874364630">
+	<style type="text/css">
+		@page { margin: 1in }
+		p { margin-bottom: 0in }
+		h2.western { font-family: "Albany", sans-serif; font-size: 16pt }
+		h2.cjk { font-family: "Droid Sans Fallback"; font-size: 16pt }
+		h2.ctl { font-family: "Droid Sans Devanagari"; font-size: 16pt }
+	</style>
+</head>
+<body lang="en-US" dir="ltr">
+<h2 class="western">How to install on Linux</h2>
+<p style="margin-bottom: 0.2in">WMS will run on most Linux
+distributions. It has been tested on Fedora, Linux Mint, Ubuntu, and
+Suse Leap 42.x.</p>
+<p style="margin-bottom: 0.2in">WMS application requires a properly
+running MySQL server (or Mariadb). The following steps are required
+prior to running WMS.</p>
+<p style="margin-bottom: 0.2in">1) Decide on the database name, user
+name, and password for WMS to use. The database should be unique to
+WMS.</p>
+<p style="margin-bottom: 0.2in">2) Create the user that will manage
+the WMS database. For Example, <a href="mailto:WMSadmin@localhost">WMSadmin@localhost</a>.</p>
+<p style="margin-bottom: 0.2in">Open a terminal and enter the
+following commands:</p>
+<p style="margin-left: 0.49in; margin-bottom: 0.2in"><i>mysql -u root
+-p</i></p>
+<p style="margin-left: 0.49in; margin-bottom: 0.2in"><i>Enter
+password:</i></p>
+<p style="margin-left: 0.49in; margin-bottom: 0.2in"><i>CREATE
+DATABASE Weighbridge; </i>
+</p>
+<p style="margin-left: 0.49in; margin-bottom: 0.2in"><i>CREATE USER
+<a href="mailto:WMSadmin@localhost">WMSadmin</a>@localhost; </i>
+</p>
+<p style="margin-left: 0.49in; margin-bottom: 0.2in"><i>GRANT ALL
+PRIVILEGES ON Weighbridge.* TO <a href="mailto:WMSadmin@localhost">WMSadmin</a>@localhost
+IDENTIFIED BY 'password'; </i>
+</p>
+<p style="margin-left: 0.49in; margin-bottom: 0.2in"><i>FLUSH
+PRIVILEGES;</i></p>
+<p style="margin-left: 0.49in; margin-bottom: 0.2in"><i>exit</i></p>
+<p align="left" style="margin-bottom: 0.2in; line-height: 100%">An
+application like phpMyAdmin can be used to do the above operations.</p>
+<p style="margin-bottom: 0.2in">3) Install and start the system:</p>
+<ul>
+	<li/>
+<p style="margin-bottom: 0.2in">Create a new folder in your
+	home directory (for example ‘wms’) and unpack the downloaded
+	compressed file into that folder</p>
+	<li/>
+<p style="margin-bottom: 0.2in">Set a link to the executable
+	file ‘wms.AppImage’ to run it from the applications menu or just
+	start it by issuing the command ‘~/wms/wms.AppImage’ from the
+	console.</p>
+</ul>
+<p style="margin-bottom: 0.2in">4) Once the application is running go
+to File→Server ,a pop up menu will show. Enter the following info:</p>
+<ol>
+	<li/>
+<p style="margin-bottom: 0.2in">Database: enter the name of
+	the database that will store your data, the same you entered in step
+	2, in our example ‘Weighbridge’.</p>
+	<li/>
+<p style="margin-bottom: 0.2in">Host: server computer name,
+	for example ‘localhost’.</p>
+	<li/>
+<p style="margin-bottom: 0.2in">Port: 3306 unless you have
+	changed default port number for MySQL</p>
+	<li/>
+<p style="margin-bottom: 0.2in">User Name: the name you
+	entered in step 2, in our example ‘WMSadmin’.</p>
+	<li/>
+<p style="margin-bottom: 0.2in">Password: The same password
+	you entered in step 2. 
+	</p>
+</ol>
+<p style="margin-bottom: 0.2in">5) Now go to File→Restore and
+choose the file ‘wmsinit.sql’. The application will initialize
+the database for use.</p>
+<p style="margin-bottom: 0.2in">6) Goto to File→Login. If all is
+well you should be able to login using ‘Admin’ for operator and
+‘admin’ for password.</p>
+<p style="margin-bottom: 0.2in"><br/>
+<br/>
+
+</p>
+<p style="margin-bottom: 0.2in"><br/>
+<br/>
+
+</p>
+<p style="margin-bottom: 0.2in"><br/>
+<br/>
+
+</p>
+<p style="margin-bottom: 0.2in"><br/>
+<br/>
+
+</p>
+</body>
+</html>

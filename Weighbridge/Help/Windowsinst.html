@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title>Installation</title>
+	<meta name="generator" content="LibreOffice 5.2.5.1 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="2017-06-19T14:18:33.819492904"/>
+	<meta name="" content=""/>
+	<meta name="created" content="00:00:00">
+	<meta name="changed" content="2017-06-19T13:46:45.182263636">
+	<meta name="created" content="00:00:00">
+	<meta name="changed" content="2017-06-19T13:34:48.508413927">
+	<meta name="created" content="00:00:00">
+	<meta name="changed" content="2017-06-09T08:21:29.790559634">
+</head>
+<body lang="en-GB" dir="ltr">
+<p><u><b>How to install on Windows</b></u></p>
+<p>WMS application requires a properly running MySQL server (or
+Mariadb). Since WMS is a 32bit application, you need to install a
+32bit version of MySQL or a 32bit version of the Wampserver
+application. WMS can run on Windows XP. The following steps are
+required prior to running WMS.</p>
+<p>1) Decide on the database name, user name, and password for WMS to
+use. The database should be unique to WMS.</p>
+<p>2) Create the user that will manage the WMS database. For Example,
+WMSadmin@localhost.</p>
+<p>Open a terminal and go to the bin directory of the MySQL
+installation, then enter the following commands:</p>
+<p>mysql -u root -p</p>
+<p>Enter password:</p>
+<p>CREATE DATABASE Weighbridge; 
+</p>
+<p>CREATE USER WMSadmin@localhost; 
+</p>
+<p>GRANT ALL PRIVILEGES ON Weighbridge.* TO WMSadmin@localhost
+IDENTIFIED BY 'password'; 
+</p>
+<p>FLUSH PRIVILEGES;</p>
+<p>exit</p>
+<p>An application like phpMyAdmin can be used to complete the above
+operations.</p>
+<p>3) Install and start the system:</p>
+<p>Create a new folder in your home directory (for example ‘wms’)
+and unpack the downloaded compressed file into that folder.</p>
+<p>You need to copy the following files from the MySQL directory to
+the WMS directory: libmysql.dll, mysql.exe, and mysqldump.exe.</p>
+<p>Start the application by running the executable file ‘wms.exe’.</p>
+<p>4) Once the application is running go to File→Server ,a pop up
+menu will show. Enter the following info:</p>
+<ul>
+	<li/>
+<p><b>Database: </b>enter the name of the database that will
+	store your data, the same you entered in step 2, in our example
+	‘Weighbridge’.</p>
+	<li/>
+<p><b>Host: </b>server computer name, for example ‘localhost’.</p>
+	<li/>
+<p><b>Port:</b> 3306 unless you have changed default port
+	number for MySQL</p>
+	<li/>
+<p><b>User Name: </b>the name you entered in step 2, in our
+	example ‘WMSadmin’.</p>
+	<li/>
+<p><b>Password:</b> The same password you entered in step 2. 
+	</p>
+</ul>
+<p>5) Now go to <span style="font-variant: normal"><span style="text-decoration: none"><span style="font-style: normal"><b>File→Restore
+</b></span></span></span>and choose the file ‘wmsinit.sql’. The
+application will initialize the database for use.</p>
+<p>6) Goto to <b>File→Login</b>. If all is well you should be able
+to login using ‘Admin’ for operator and ‘admin’ for password.</p>
+<p><br/>
+<br/>
+
+</p>
+<p><br/>
+<br/>
+
+</p>
+<p><br/>
+<br/>
+
+</p>
+<p><br/>
+<br/>
+
+</p>
+</body>
+</html>

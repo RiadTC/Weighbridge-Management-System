@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 5.2.3.3 (Linux)"/>
+	<meta name="created" content="00:00:00"/>
+	<meta name="changed" content="2017-03-16T11:51:19.053695591"/>
+	<meta name="" content=""/>
+	<meta name="created" content="00:00:00">
+	<meta name="changed" content="2017-03-16T11:00:42.142914971">
+</head>
+<body lang="en-GB" dir="ltr">
+<p>How to install on Linux</p>
+<p>Weighbridge requires a running sql server (Mysql or Mariadb )to be
+installed properly. 
+</p>
+<ul>
+	<li/>
+<p>Unpack the downloaded pack.</p>
+	<li/>
+<p>Set a link to the executable file.</p>
+	<li/>
+<p>Run it.</p>
+</ul>
+<p>The pop up menu you will enter the follwing ifo:</p>
+<ol>
+	<li/>
+<p>Database: enter the database name you created in mysql.
+	eg., Weighbridge</p>
+	<li/>
+<p>Host: server computer name, localhost</p>
+	<li/>
+<p>Port: 3306 unless you have chaged default ort number for
+	mysql 
+	</p>
+	<li/>
+<p>User Name: the name you want to run the weighbridge
+	application under in mysql</p>
+	<li/>
+<p>Password.</p>
+</ol>
+<p>Note: all the above can be created either directly on mysql or
+using an application as phpmyAdmin</p>
+<p><br/>
+<br/>
+
+</p>
+</body>
+</html>

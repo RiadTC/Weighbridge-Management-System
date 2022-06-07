@@ -1,0 +1,20 @@
+#include "simpledialog.h"
+#include "ui_simpledialog.h"
+
+SimpleDialog::SimpleDialog(QWidget *parent, QCompleter *Completer) :
+    QDialog(parent),
+    ui(new Ui::SimpleDialog)
+{
+    ui->setupUi(this);
+    ui->leText->setCompleter(Completer);
+}
+
+SimpleDialog::~SimpleDialog()
+{
+    delete ui;
+}
+
+void SimpleDialog::on_buttonBox_accepted()
+{
+    this->Text = ui->leText->text();
+}
