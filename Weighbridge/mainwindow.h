@@ -8,6 +8,7 @@
 #include <QButtonGroup>
 #include <QSqlDatabase>
 #include <QLabel>
+#include <QRegExp>
 
 #include "Setup/Operators.h"
 #include "Setup/Items.h"
