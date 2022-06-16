@@ -16,9 +16,10 @@ class DialogLogin : public QDialog
 public:
 
     Operator User;
-    bool correctPass = false;
+    bool Legal;
 
     explicit DialogLogin(QSqlDatabase db, QWidget *parent = 0);
+    void closeEvent (QCloseEvent *event);
     ~DialogLogin();
 
 private slots:

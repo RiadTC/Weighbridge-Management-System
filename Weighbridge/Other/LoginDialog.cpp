@@ -19,6 +19,8 @@ DialogLogin::DialogLogin(QSqlDatabase db, QWidget *parent) :
     ui->setupUi(this);
     ui->leOperator->setFocus();
     mydb = db;
+    Legal = false;
+
 }
 
 DialogLogin::~DialogLogin()
@@ -26,6 +28,12 @@ DialogLogin::~DialogLogin()
     delete ui;
 }
 
+
+void DialogLogin::closeEvent (QCloseEvent *event)
+{
+    if (!Legal) User.id = -2;
+//    event->Close;
+}
 
 void DialogLogin::on_leOperator_returnPressed()
 {
@@ -77,16 +85,13 @@ void DialogLogin::on_buttonBox_accepted()
     {   Msg.setText("Incorrect Password");
         Msg.setWindowTitle("Operator Password");
         Msg.exec();
-        ui->lePassword->clear();
-        ui->lePassword->setFocus();
+        User.id = -1;
     }
-    else
-    { correctPass = true;
-      this->close();
-    }
+    else { Legal = true; this->close();}
 }
 
 void DialogLogin::on_buttonBox_rejected()
 {
+    User.id = -2;
     this->close();
 }

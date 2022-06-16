@@ -107,7 +107,8 @@ void MainWindow::createStatusBar()
 
     DateLabel = new QLabel;
     DateLabel->setAlignment(Qt::AlignRight);
-    DateLabel->setStyleSheet("font-size: 11pt;font-weight: bold;background-color: rgb(128,128, 0)");
+    //DateLabel->setIndent(3);
+    DateLabel->setStyleSheet("font-size: 11pt;font-weight: bold;background-color: rgb(255,210, 0)");
     statusBar()->addPermanentWidget(DateLabel);
 
 }
@@ -115,7 +116,7 @@ void MainWindow::createStatusBar()
 
 void MainWindow::timerEvent(QTimerEvent * event)
 {
-    DateLabel->setText(QDateTime::currentDateTime().toString("dddd MMM dd, yyyy hh:mm"));
+    DateLabel->setText(QDateTime::currentDateTime().toString("dddd MMM dd, yyyy hh:mm:ss"));
    // statusBar()->showMessage(QDateTime::currentDateTime().toString("MMM dd, yyyy hh:mm:ss"),0);
 }
 
@@ -193,6 +194,34 @@ void MainWindow::readData()
  }
 
 
+/*void MainWindow::readData(QString Text)
+{
+    QByteArray data;
+    const char *s1;
+    float w;
+    int i;
+    static int Count = 0;
+    static QString s2;
+
+    data = ui->lineEdit->text().toUtf8().constData();
+    s1 = data.constData();
+    s1 = &s1[data.length()-1];
+    if ((Count) && (*s1 != Delimiter.at(0)))
+    {   s2[StreamLen-Count] = QChar(*s1);
+        Count ++;
+        if (Count > StreamLen)
+        {
+            Count = 0;
+            w = s2.toDouble();
+            w = (w - CurTicket->Empty) * CurTicket->Factor;
+            i = w;
+            i = (i/10)*10;
+            ui->lcdNumber->display(i);
+        }
+    }
+    if  (*s1 == Delimiter.at(0)) { Count=1; s2.clear(); } //qDebug() << s1;}
+ }
+*/
 
 void MainWindow::ClearScreen()
 {
@@ -213,6 +242,7 @@ void MainWindow::on_leVehicule_returnPressed()
     QMessageBox msgBox;
     int Index;
 
+//    if (ui->leVehicule->text() != NULL)
     if (!ui->leVehicule->text().isEmpty())
     {   ui->leVehicule->setText(ui->leVehicule->text().toUpper());
         Index = VehiculeList->indexOf(ui->leVehicule->text(),0) ;
