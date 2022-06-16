@@ -33,8 +33,9 @@ void MainWindow::on_actionLogin_triggered()
     }
     // If a database connection is already established proceed with the login process
     if (ui->actionLogin->text() == "&Login")
-    {   DL.exec();
-        if (DL.User.id >=0)
+    {   // if Login is pressed then show the login dialog.
+        DL.exec();
+        if (DL.correctPass) // if the operatorname and password are correct, proceed with the login
         {   CurOperator.id = DL.User.id;
             CurOperator.Name = DL.User.Name;
             ui->actionLogin->setText("Logout");
@@ -105,10 +106,11 @@ void MainWindow::on_actionLogin_triggered()
                ui->tvTicket->horizontalHeader()->setSectionResizeMode(c, QHeaderView::Stretch);
            }
         }
-        else if (DL.User.id > -2)  DL.close(); //must be adjusted
+        DL.close();
     }
     else
-    {  // Quitting the application. Show a warning message. If confirmed, proceed.
+    {   // Logout is pressed.
+        // Quitting the application. Show a warning message. If confirmed, proceed.
         Warning.setText("Are you sure you want to quit?");
         Warning.setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel );
         Warning.setDefaultButton(QMessageBox::Cancel);
