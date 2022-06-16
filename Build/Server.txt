@@ -1,0 +1,1 @@
+Weighbridge;localhost;3306;riad;admin
