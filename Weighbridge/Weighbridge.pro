@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 QT     += core gui sql printsupport help
-QT     += widgets serialport svg qml
+QT     += widgets serialport svg qml core5compat
 
 TARGET = Weighbridge
 TEMPLATE = app
