@@ -38,7 +38,7 @@ int Customers::getCustomer(QString Name)
 {
     int i=0;
 
-    while ((i < ui->lvCustomers->model()->rowCount()) && (ui->lvCustomers->model()->index(i,1).data().toString()!= Name))i++;
+    while ((i < ui->lvCustomers->model()->rowCount()) && (ui->lvCustomers->model()->index(i,2).data().toString()!= Name))i++;
     if (i >= ui->lvCustomers->model()->rowCount()) return -1;
     else return i;
 
@@ -50,7 +50,7 @@ void MainWindow::getCustomer(Customer *Cust, int row)
 {
 
     Cust->id = ui->tvCustomers->model()->index(row,0).data().toInt();
-    Cust->Name = ui->tvCustomers->model()->index(row,1).data().toString();
+    Cust->Name = ui->tvCustomers->model()->index(row,2).data().toString();
     Cust->Active = ui->tvCustomers->model()->index(row,5).data().toBool();
     Cust->Factor = ui->tvCustomers->model()->index(row,6).data().toDouble();
 
@@ -64,15 +64,15 @@ int MainWindow::getCustomerId(QString CustName)
 
     if (!CustName.isEmpty())
     {   RowCount = CustCompleter->model()->rowCount();
-         s = CustCompleter->model()->index(CurRow,1).data().toString();
+        s = CustCompleter->model()->index(CurRow,2).data().toString();
         while ( (s != CustName)  && (CurRow < RowCount))
         {   CurRow++;
-            s = CustCompleter->model()->index(CurRow,1).data().toString();
+            s = CustCompleter->model()->index(CurRow,2).data().toString();
         }
         if (CurRow < RowCount)
         {
             CurCustomer->id = CustCompleter->model()->index(CurRow,0).data().toInt();
-            CurCustomer->Name = CustCompleter->model()->index(CurRow,1).data().toString();
+            CurCustomer->Name = CustCompleter->model()->index(CurRow,2).data().toString();
             CurCustomer->Factor = CustCompleter->model()->index(CurRow,6).data().toDouble();
             return CurCustomer->id;
         }
@@ -124,9 +124,10 @@ bool Customers::AddCustomer(Customer *Cust, int *Index)
        }
       else
        {  if (Index != NULL) *Index = Query.lastInsertId().toInt();
-          return 1;
+          return true;
        }
     }
+    else return false;
 }
 
 void MainWindow::on_pbModifyCustomer_clicked()

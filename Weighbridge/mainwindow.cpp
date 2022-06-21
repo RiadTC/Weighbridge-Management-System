@@ -87,6 +87,8 @@ MainWindow::MainWindow(QWidget *parent) :
     for (i=0; i<15; i++) ReportTab[i] = ui->tabWidget->widget(i+2);
     for (i=0; i<15; i++) ui->tabWidget->removeTab(2);
 
+    //ui->gbButtons->setStyleSheet("::title {color:black; font-size: bold}, background-color: rgb(170,170, 127)");
+
     ui->cbOther->setInsertPolicy(QComboBox::InsertAlphabetically);
 
     createStatusBar();
@@ -107,7 +109,7 @@ void MainWindow::createStatusBar()
 
     DateLabel = new QLabel;
     DateLabel->setAlignment(Qt::AlignRight);
-    DateLabel->setStyleSheet("font-size: 11pt;font-weight: bold;background-color: rgb(128,128, 0)");
+    DateLabel->setStyleSheet("font-size: 11pt;font-weight: bold; color : black; background-color: rgb(170,170, 127)");
     statusBar()->addPermanentWidget(DateLabel);
 
 }
@@ -115,7 +117,7 @@ void MainWindow::createStatusBar()
 
 void MainWindow::timerEvent(QTimerEvent * event)
 {
-    DateLabel->setText(QDateTime::currentDateTime().toString("dddd MMM dd, yyyy hh:mm"));
+    DateLabel->setText(QDateTime::currentDateTime().toString("  dddd MMM dd, yyyy hh:mm  "));
    // statusBar()->showMessage(QDateTime::currentDateTime().toString("MMM dd, yyyy hh:mm:ss"),0);
 }
 
@@ -133,17 +135,17 @@ void MainWindow::ResetButtons ()
 
 void MainWindow::ResetButtonsBackground ()
 {
-    ui->rb0->setStyleSheet( "background-color: rgb(170, 170, 127);");
-    ui->rb1->setStyleSheet( "background-color: rgb(170, 170, 127);");
-    ui->rb2->setStyleSheet( "background-color: rgb(170, 170, 127);");
-    ui->rb3->setStyleSheet( "background-color: rgb(170, 170, 127);");
-    ui->rb4->setStyleSheet( "background-color: rgb(170, 170, 127);");
-    ui->rb5->setStyleSheet( "background-color: rgb(170, 170, 127);");
-    ui->rb6->setStyleSheet( "background-color: rgb(170, 170, 127);");
-    ui->rb7->setStyleSheet( "background-color: rgb(170, 170, 127);");
-    ui->rb8->setStyleSheet( "background-color: rgb(170, 170, 127);");
-    ui->cbOther->setStyleSheet( "background-color: rgb(170, 170, 127);");
-    ui->rb9->setStyleSheet( "background-color: rgb(170, 170, 127);");
+    ui->rb0->setStyleSheet( "color: black; background-color: rgb(170, 170, 127);");
+    ui->rb1->setStyleSheet( "color: black; background-color: rgb(170, 170, 127);");
+    ui->rb2->setStyleSheet( "color: black; background-color: rgb(170, 170, 127);");
+    ui->rb3->setStyleSheet( "color: black; background-color: rgb(170, 170, 127);");
+    ui->rb4->setStyleSheet( "color: black; background-color: rgb(170, 170, 127);");
+    ui->rb5->setStyleSheet( "color: black; background-color: rgb(170, 170, 127);");
+    ui->rb6->setStyleSheet( "color: black; background-color: rgb(170, 170, 127);");
+    ui->rb7->setStyleSheet( "color: black; background-color: rgb(170, 170, 127);");
+    ui->rb8->setStyleSheet( "color: black; background-color: rgb(170, 170, 127);");
+    ui->rb9->setStyleSheet( "color: black; background-color: rgb(170, 170, 127);");
+    ui->cbOther->setStyleSheet( "color: black; background-color: rgb(170, 170, 127);");
 }
 
 void MainWindow::SetButton(int i, QString Label)
@@ -246,7 +248,7 @@ void MainWindow::on_leCustomer_returnPressed()
     {
         if (getCustomerId(ui->leCustomer->text()) < 0)
         {
-            msgBox.setText("This customer is not in the database.");
+            msgBox.setText("This customer is not in the database.\n\nUse Setup->Customers to add it.");
             msgBox.setStandardButtons(QMessageBox::Close);
             msgBox.setModal(true);
             msgBox.exec();
@@ -679,7 +681,7 @@ void MainWindow::on_pbSearch_clicked()
     ui->tvResult->resizeColumnsToContents();
     ui->tvResult->horizontalHeader()->setSectionResizeMode(5,QHeaderView::Stretch);
     ui->tvResult->horizontalHeader()->setSectionResizeMode(6,QHeaderView::Stretch);
-    ui->tvResult->horizontalHeader()->setStyleSheet("font-size: 11pt;font-weight: bold;background-color: rgb(255,210, 0)");
+    ui->tvResult->horizontalHeader()->setStyleSheet("font-size: 11pt;font-weight: bold;color: black;background-color: rgb(170,170,127)");
 
     ui->tvResult->setItemDelegateForColumn(7, new MyStringDelegate(this) );
     ui->tvResult->setItemDelegateForColumn(8, new MyStringDelegate(this) );
@@ -692,8 +694,8 @@ void MainWindow::on_pbSearch_clicked()
         for (int row = 0; row < Model->rowCount(); ++row) {
             result += Model->data(Model->index(row, column)).toInt();
         }
-      //statusBar()->showMessage("Total Weight = " + QString::number(result) ); // show sum in label
-        ui->lresult->setText("Total Weight  " + QString::number(result)+ " Kg");
+    // show sum in label
+    ui->lresult->setText("Total Weight  " + QString::number(result)+ " Kg");
 
 }
 

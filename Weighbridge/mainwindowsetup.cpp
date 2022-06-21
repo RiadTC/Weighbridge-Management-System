@@ -58,7 +58,7 @@ void MainWindow::on_actionCustomers_triggered()
     ui->tvCustomers->model()->setHeaderData(1, Qt::Horizontal, "Name", 0);
     //ui->tvCustomers->model()->setHeaderData(2, Qt::Horizontal, "Full Name", 0);
     for (int i=0; i<10; i++) ui->tvCustomers->hideColumn(i);
-    ui->tvCustomers->showColumn(1);
+    ui->tvCustomers->showColumn(2);
     ui->tvCustomers->resizeColumnsToContents();
     ui->tvCustomers->horizontalHeader()->setSectionResizeMode(1,QHeaderView::Stretch);
     ui->tvCustomers->setAlternatingRowColors(true);

@@ -126,7 +126,6 @@ void MainWindow::InitData ()
     QSqlRecord TmpRecord;
     QSqlQuery Query (db);
     QSqlError Err;
-    QStringList *itlist;
     QString Name;
     int i = 0;
     Item Material;
@@ -138,32 +137,30 @@ void MainWindow::InitData ()
     CurTable->select();
     CurTable->sort(1, Qt::AscendingOrder);
     CustCompleter = new QCompleter(CurTable);
-    CustCompleter->setCompletionColumn(1);
+    CustCompleter->setCompletionColumn(2);
     CustCompleter->setCompletionMode(QCompleter::PopupCompletion);
     CustCompleter->setCaseSensitivity(Qt::CaseInsensitive);
     CustCompleter->setFilterMode(Qt::MatchContains);
+
     // Open and read Items Table into a list
     CurTable = new QSqlTableModel(0, db);
     CurTable->setTable("Item");
     CurTable->select();
-    itlist = new QStringList;
-    i = 0;
-    while (i < CurTable->rowCount())
-    {   TmpRecord = CurTable->record(i);
-        Material.ShortDesc = TmpRecord.value("ShortDesc").toString();
-        if (i>8) itlist->append(Material.ShortDesc);
-        i++;
-    }
-    itlist->sort(Qt::CaseInsensitive);
-   // ItemCompleterShort = new QCompleter(*itlist);
-   // ItemCompleterShort->setCompletionMode(QCompleter::UnfilteredPopupCompletion);
-//    ItemCompleterShort->setCaseSensitivity(Qt::CaseInsensitive);
-    //CurTable->sort(1, Qt::AscendingOrder);
     ItemCompleter = new QCompleter(CurTable);
     ItemCompleter->setModel(CurTable);
     ItemCompleter->setCompletionColumn(1);
     ItemCompleter->setCompletionMode(QCompleter::UnfilteredPopupCompletion);
     ItemCompleter->setCaseSensitivity(Qt::CaseInsensitive);
+    // Fill the items combobox with the items name list
+    i = 9;
+    while (i < CurTable->rowCount())
+    {   TmpRecord = CurTable->record(i);
+        Material.ShortDesc = TmpRecord.value("ShortDesc").toString();
+        ui->cbOther->addItem(Material.ShortDesc);
+        i++;
+    }
+    ui->cbOther->clearFocus();
+
     // Create a list of vehicules
     CurTable = new QSqlTableModel(0, db);
     CurTable->setTable("Ticket");

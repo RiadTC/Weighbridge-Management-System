@@ -35,7 +35,7 @@ void MainWindow::on_actionLogin_triggered()
     if (ui->actionLogin->text() == "&Login")
     {   // if Login is pressed then show the login dialog.
         DL.exec();
-        if (DL.correctPass) // if the operatorname and password are correct, proceed with the login
+        if (DL.correctPass) // if the operator name and password are correct, proceed with the login
         {   CurOperator.id = DL.User.id;
             CurOperator.Name = DL.User.Name;
             ui->actionLogin->setText("Logout");
@@ -56,6 +56,8 @@ void MainWindow::on_actionLogin_triggered()
             ui->leDriver1->setCompleter((DriverCompleter));
             ui->leTransporter->setCompleter(TransporterCompleter);
             ui->leTransporter1->setCompleter(TransporterCompleter);
+
+            // Fill the items in the Material section
             while (i < ItemCompleter->model()->rowCount())
             {  switch (i)
                 {
@@ -68,7 +70,7 @@ void MainWindow::on_actionLogin_triggered()
                     case 6: ui->rb6->setText(ItemCompleter->model()->index(i,1).data().toString()); break;
                     case 7: ui->rb7->setText(ItemCompleter->model()->index(i,1).data().toString()); break;
                     case 8: ui->rb8->setText(ItemCompleter->model()->index(i,1).data().toString()); break;
-                    //case 9: ui->leOther->setText(ItemCompleter->model()->index(i,1).data().toString()); break;
+                    //case 9: ui->cbOther->setText(ItemCompleter->model()->index(i,1).data().toString()); break;
                 }
                 i++;
             }
@@ -99,7 +101,7 @@ void MainWindow::on_actionLogin_triggered()
         ui->tvTicket->hideColumn(0);
         ui->tvTicket->horizontalHeader()->setSectionsMovable(true);
         ui->tvTicket->setAlternatingRowColors(true);
-        ui->tvTicket->horizontalHeader()->setStyleSheet("font-size: 11pt;font-weight: bold;background-color: rgb(255, 210, 0)");
+        ui->tvTicket->horizontalHeader()->setStyleSheet("font-size: 11pt;font-weight: bold; color: black; background-color: rgb(170,170, 127)");
         //ui->tvTicket->setStyleSheet("alternate-background-color: lightyellow;background-color: lightgray;");
         for (int c = 0; c < ui->tvTicket->horizontalHeader()->count(); ++c)
            {
@@ -181,7 +183,7 @@ void MainWindow::on_actionTransactionsImport_triggered()
     QStringList TransAttributes, OperatorList;
     QString Transaction, Description, fileName;
     QFile File;
-    int i, index, ItemID, CustomerID, OperatorID, counter ;
+    int i, index, ItemID, CustomerID, OperatorID ;
     QDateTime timeIn, timeOut;
     QMessageBox Warning;
     QFrame *ProgressDialog;
@@ -300,7 +302,7 @@ void MainWindow::on_actionTransactionsImport_triggered()
                     Record.setValue("TimeIn", timeIn);
                     Record.setValue("Transporter", TransAttributes.at(8));
                     Record.setValue("Driver", TransAttributes.at(9));
-                    counter =  TransAttributes.size() ;
+                    //counter =  TransAttributes.size() ;
                     if (TransAttributes.size() == 11) Record.setValue("Remark", TransAttributes.at(10));
                     if (!TicketTable->insertRecord(-1,Record))
                     {
