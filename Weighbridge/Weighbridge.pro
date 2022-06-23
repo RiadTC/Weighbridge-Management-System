@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 QT     += core gui sql printsupport help
-QT     += widgets serialport svg qml
+QT     += widgets serialport svg qml core5compat
 
 TARGET = Weighbridge
 TEMPLATE = app
@@ -83,3 +83,6 @@ win32:LIBS += -L$$PWD/lib1/ -lQtZint
 
 INCLUDEPATH += $$PWD/
 DEPENDPATH += $$PWD/
+
+DISTFILES += \
+    readme

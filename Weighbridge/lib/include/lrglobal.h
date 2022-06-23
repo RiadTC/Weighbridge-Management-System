@@ -1,6 +1,6 @@
 /***************************************************************************
  *   This file is part of the Lime Report project                          *
- *   Copyright (C) 2015 by Alexander Arin                                  *
+ *   Copyright (C) 2021 by Alexander Arin                                  *
  *   arin_a@bk.ru                                                          *
  *                                                                         *
  **                   GNU General Public License Usage                    **
@@ -33,6 +33,7 @@
 #include <stdexcept>
 #include <QString>
 #include <QStyleOptionViewItem>
+#include <QtGlobal>
 
 #if defined(LIMEREPORT_EXPORTS)
 #  define LIMEREPORT_EXPORT Q_DECL_EXPORT
@@ -50,6 +51,9 @@ namespace LimeReport {
 #define VARIABLE_IS_NOT_USED
 #endif
 
+#if QT_VERSION >= 0x050800
+Q_NAMESPACE
+#endif
 
 namespace Const{
     int const DEFAULT_GRID_STEP = 1;
@@ -100,7 +104,11 @@ namespace Const{
     QString extractClassName(QString className);
     QString escapeSimbols(const QString& value);
     QString replaceHTMLSymbols(const QString &value);
-    QVector<QString> normalizeCaptures(const QRegExp &reg);
+#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 3)
+    QVector<QString> normalizeCaptures(const QRegularExpressionMatch &reg);
+#else
+    QVector<QString> normalizeCaptures(const QRegExp &reg);    
+#endif
     bool isColorDark(QColor color);
 
     enum ExpandType {EscapeSymbols, NoEscapeSymbols, ReplaceHTMLSymbols};
@@ -144,20 +152,21 @@ namespace Const{
         virtual ~IPainterProxy();
     };
 
-#if QT_VERSION < QT_VERSION_CHECK(5, 0, 0)
+#if QT_VERSION < 0x050000
     typedef QStyleOptionViewItemV4 StyleOptionViewItem;
 #else
     typedef QStyleOptionViewItem StyleOptionViewItem;
 #endif
 
-#if QT_VERSION >= QT_VERSION_CHECK(5, 8, 0)
-    Q_NAMESPACE
-#endif
     class Enums
     {
     public:
         enum VariableDataType {Undefined, String, Bool, Int, Real, Date, Time, DateTime};
+#if QT_VERSION >= 0x050500
+        Q_ENUM(VariableDataType)
+#else
         Q_ENUMS(VariableDataType)
+#endif
     private:
         Enums(){}
         Q_GADGET

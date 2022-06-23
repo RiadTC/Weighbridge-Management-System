@@ -40,6 +40,7 @@ public:
     void activateItemSelectionMode();
     void deleteSelectedItems();
     void activateCurrentPage();
+    void resize(ScaleType scaleType, int percent=0);
 
 public slots:
     void refreshPages();
@@ -85,6 +86,7 @@ private:
     QColor    m_previewPageBackgroundColor;
     QPrinter* m_defaultPrinter;
     void printPages(QPrinter *printer);
+    bool m_scaleChanging;
 };
 
 } // namespace LimeReport

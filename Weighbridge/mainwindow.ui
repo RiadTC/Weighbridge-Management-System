@@ -74,7 +74,7 @@
           </widget>
           <widget class="QTableView" name="tvTicket">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
@@ -315,7 +315,6 @@
                <property name="font">
                 <font>
                  <pointsize>11</pointsize>
-                 <weight>75</weight>
                  <bold>true</bold>
                 </font>
                </property>
@@ -671,7 +670,7 @@ color:rgb(255, 0, 0);
              <widget class="QLabel" name="label_14">
               <property name="font">
                <font>
-                <weight>75</weight>
+                <pointsize>11</pointsize>
                 <bold>true</bold>
                </font>
               </property>
@@ -704,7 +703,6 @@ color:rgb(255, 0, 0);
               <property name="font">
                <font>
                 <pointsize>11</pointsize>
-                <weight>50</weight>
                 <bold>false</bold>
                </font>
               </property>
@@ -1375,7 +1373,6 @@ color:rgb(255, 0, 0);
           <property name="font">
            <font>
             <pointsize>12</pointsize>
-            <weight>75</weight>
             <bold>true</bold>
            </font>
           </property>
@@ -1872,7 +1869,6 @@ color:rgb(255, 0, 0);
                  <property name="font">
                   <font>
                    <pointsize>14</pointsize>
-                   <weight>75</weight>
                    <bold>true</bold>
                   </font>
                  </property>
@@ -2046,7 +2042,6 @@ color:rgb(255, 0, 0);
                 <property name="font">
                  <font>
                   <pointsize>12</pointsize>
-                  <weight>75</weight>
                   <bold>true</bold>
                  </font>
                 </property>
@@ -2254,7 +2249,6 @@ color:rgb(255, 0, 0);
                 <property name="font">
                  <font>
                   <pointsize>12</pointsize>
-                  <weight>75</weight>
                   <bold>true</bold>
                  </font>
                 </property>
@@ -3972,7 +3966,7 @@ color:rgb(255, 0, 0);
      <x>0</x>
      <y>0</y>
      <width>1162</width>
-     <height>23</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
